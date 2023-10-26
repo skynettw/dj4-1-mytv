@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}
+播放清單編輯
+{% endblock %}
+{% block header %}
+<h1>播放清單編輯【{{ target_list.name }}】</h1>
+{% endblock %}
+{% block content %}
+    <form action="." method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="list_id" value="{{ target_list.id }}">
+        <div class="form-group">
+            <label for="title">影片名稱</label>
+            <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="vid">影片ID</label>
+            <input type="text" class="form-control" id="vid" name="vid" required>
+        </div>
+        <button type="submit" class="btn btn-primary">送出</button>
+    </form>
+    {% if videos %}
+        <table class="table table-striped">
+            <tr><td>影片名稱</td><td>vid</td><td>觀看次數</td><td>管理</td></tr>
+            {% for video in videos %}
+                <tr>
+                    <td>{{ video.title }}</td>
+                    <td>{{ video.vid }}</td>
+                    <td>{{ video.counter }}</td>
+                    <td><a class="btn btn-sm btn-outline-warning" href="/delete/{{ video.id }}/">刪除</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p class="alert alert-warning">目前清單中沒有任何影片</p>
+    {% endif %}
+{% endblock %}

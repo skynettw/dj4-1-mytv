@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}
+新增影片
+{% endblock %}
+{% block header %}
+<h1>新增影片</h1>
+{% endblock %}
+{% block content %}
+    <form action="." method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="list_id">影片清單</label>
+            <select class="form-control" id="list_id" name="list_id">
+                {% for mlist in mlists %} 
+                    <option value="{{mlist.id}}">{{mlist.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="vid">影片VID</label>
+            <input type="text" class="form-control" id="vid" name="vid" value="{{vid}}">
+        </div>
+        <div class="form-group">
+            <label for="title">影片名稱</label>
+            <input type="text" class="form-control" id="title" name="title" value="{{title}}">
+        </div>
+        <button type="submit" class="btn btn-primary">新增影片</button>
+    </form>
+{% endblock %}

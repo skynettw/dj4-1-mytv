@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}
+搜尋影片
+{% endblock %}
+{% block header %}
+<h1>搜尋影片</h1>
+{% endblock %}
+{% block content %}
+    <form action="." method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="q">關鍵字</label>
+            <input type="text" class="form-control" id="q" name="q" value="{{s}}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">到YouTube上搜尋</button>
+    </form>
+    {% if videos %}
+        <table class="table table-striped">
+            <tr><td>影片名稱</td><td>頻道</td><td>管理</td></tr>
+            {% for video in videos %}
+                <tr>
+                    <td>{{ video.title }}</td>
+                    <td>{{ video.channel }}</td>
+
+                    <td><a class="btn btn-sm btn-outline-warning" href="/add/{{ video.title}}/{{ video.vid }}/">加入清單</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p class="alert alert-warning">沒有搜尋到任何影片</p>
+    {% endif %}
+{% endblock %}

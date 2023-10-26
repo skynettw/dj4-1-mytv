@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}
+觀看次數統計
+{% endblock %}
+{% block header %}
+<h1>觀看次數統計</h1>
+{% endblock %}
+{% block content %}
+<div>
+    <canvas id="myChart"></canvas>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <script>
+    const ctx = document.getElementById('myChart');
+  
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: [
+            {% for r in rank %}
+            "{{ r.title }}",
+            {% endfor %}
+        ],
+
+        datasets: [{
+          label: '# of Views',
+          data: [
+            {% for r in rank %}
+            {{ r.counter }},
+            {% endfor %}
+        ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+{% endblock %}

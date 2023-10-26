@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}
+播放影片
+{% endblock %}
+{% block header %}
+<h1>{{target_video.title}}</h1>
+{% endblock %}
+{% block content %}
+    <div class="card mb-3" align="center">
+        <div class="card-body">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{target_video.vid}}?rel=0" allowfullscreen width="800" height="600"></iframe>
+            </div>                    
+        </div>
+        <div class="card-footer">
+            <p class="card-text"><small class="text-muted">觀看次數：{{target_video.counter}}</small></p>
+        </div>
+{% endblock %}

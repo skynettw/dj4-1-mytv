@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}
+{{ target_list.name }}
+{% endblock %}
+{% block header %}
+<h1>{{ target_list.name }}</h1>
+{% endblock %}
+{% block content %}
+    {% if videos %}
+        <div class="row">
+            {% for video in videos %}
+                <div class="col-sm-6 col-md-4 col-lg-3 col-sx-12">
+                    <div class="card">
+                        <img src="https://i3.ytimg.com/vi/{{video.vid}}/hqdefault.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">{{video.title}}</h5>
+                        <p class="card-text">觀看次數：{{video.counter}}</p>
+                        <p align="right"><a href="/play/{{video.id}}/" class="btn btn-primary">觀看影片</a></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="alert alert-warning">本清單目前沒有任何影片</p>
+    {% endif %}
+{% endblock %}
