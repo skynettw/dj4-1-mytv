@@ -1,5 +1,4 @@
 from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from mysite import models
@@ -32,6 +31,7 @@ def index(request):
 def show(request, id):
     target_list = models.MovieList.objects.get(id=id)
     videos = target_list.movie_set.all()
+    #videos = models.Movie.objects.filter(mlist=target_list)
     return render(request, 'show.html', locals())
 
 @login_required

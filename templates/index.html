@@ -6,6 +6,8 @@
 <h1>微影片播放平台</h1>
 {% endblock %}
 {% block content %}
+    <div class="row">
+        <div class="col-8 mx-auto">
     {% if request.user.is_authenticated %}
     <form action="." method="POST">
         {% csrf_token %}
@@ -41,4 +43,6 @@
     {% else %}
         <p class="alert alert-warning">目前沒有任何影片清單</p>
     {% endif %}
+    </div>
+</div>
 {% endblock %}

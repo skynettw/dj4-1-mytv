@@ -6,6 +6,8 @@
 <h1>搜尋影片</h1>
 {% endblock %}
 {% block content %}
+<div class="row">
+    <div class="col-8 mx-auto">
     <form action="." method="POST">
         {% csrf_token %}
         <div class="form-group">
@@ -29,4 +31,6 @@
     {% else %}
         <p class="alert alert-warning">沒有搜尋到任何影片</p>
     {% endif %}
+    </div>
+</div>
 {% endblock %}
