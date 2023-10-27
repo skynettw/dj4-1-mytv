@@ -6,20 +6,8 @@ import random
 
 DEVELOPER_KEY = "AIzaSyCqWPwBqGABC-zZPCagJcMcC_8bZhUz_EQ"
 
-def make_video_list(mlists):
-    data = list()
-    for mlist in mlists:
-        item = dict()
-        item['id'] = mlist.id
-        item['name'] = mlist.name
-        item['desc'] = mlist.desc
-        item['mcounts'] = mlist.movie_set.count()
-        data.append(item)
-    return data
-
 def index(request):
     mlists = models.MovieList.objects.all().order_by('-id')
-    data = make_video_list(mlists)
     if request.method=="POST":
         name = request.POST['name']
         desc = request.POST['desc']

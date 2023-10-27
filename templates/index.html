@@ -22,9 +22,9 @@
         <button type="submit" class="btn btn-primary">送出</button>
     </form>
     {% endif %}
-    {% if data %}
+    {% if mlists %}
         <ul class="list-group">
-            {% for mlist in data %}
+            {% for mlist in mlists %}
                 <li class="list-group-item d-flex justify-content-between align-items-start">
                     <div class="ms-2 me-auto">
                         <div class="fw-bold">
@@ -36,7 +36,7 @@
                             <a class="btn btn-sm btn-outline-danger" href="/delete-list/{{mlist.id}}/">刪除</a>
                         {% endif %}
                     </div>
-                    <span class="badge bg-primary rounded-pill">{{ mlist.mcounts }}</span>
+                    <span class="badge bg-primary rounded-pill">{{ mlist.movie_set.count }}</span>
                 </li>
             {% endfor %}
         </ul>
