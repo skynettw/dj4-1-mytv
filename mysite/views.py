@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from mysite import models
 import random 
 
-DEVELOPER_KEY = "AIzaSyCqWPwBqGABC-zZPCagJcMcC_8bZhUz_EQ"
+DEVELOPER_KEY = "********"
 
 def index(request):
     mlists = models.MovieList.objects.all().order_by('-id')
